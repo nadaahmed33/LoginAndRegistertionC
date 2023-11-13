@@ -17,41 +17,40 @@ int main(void)
     bool f;
     int active;
 
-    printf("\nEnter the Activation: ");
+    printf("\nActivation= ");
     scanf("%d", &active);
 
     f = active;
 
-    printf("\nEnter Username: ");
+    printf("\nUsername: ");
     scanf("%s", l.username);
 
-    printf("\nEnter Password: ");
+    printf("\nPassword: ");
     scanf("%s", l.password);
 
     getchar();
 
     if (f)
     {
-        char usernamee[30], passwordd[20];
+        char usernamea[30], passworda[20];
 
-        printf("\nPlease Enter your login credentials below\n\n");
         printf("Username:  ");
-        scanf("%s", usernamee);
+        scanf("%s", usernamea);
 
         printf("\nPassword: ");
         printf("\n");
-        scanf("%s", passwordd);
+        scanf("%s", passworda);
 
-        int r1 = strcmp(usernamee, l.username);
-        int r2 = strcmp(passwordd, l.password);
+        int r1 = strcmp(usernamea, l.username);
+        int r2 = strcmp(passworda, l.password);
 
         if (r1 == 0 && r2 == 0)
         {
-            printf("\nSuccessful Login\n");
+            printf("\nSuccessful \n");
         }
         else
         {
-            printf("\nLogin Failed\n");
+            printf("\n Failed\n");
         }
     }
 
