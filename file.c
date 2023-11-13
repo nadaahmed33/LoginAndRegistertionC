@@ -1,83 +1,57 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-struct User {
-    char username[50];
-    char password[50];
+struct login
+{
+    char fname[30];
+    char lname[30];
+    char username[30];
+    char password[20];
 };
 
-void registerUser() {
-    struct User newUser;
-    FILE *file = fopen("users.txt", "a"); 
+int main(void)
+{
+    struct login l;
+    bool f;
+    int active;
 
-    if (file == NULL) {
-        perror("Error opening file");
-        exit(1);
-    }
+    printf("\nEnter the Activation: ");
+    scanf("%d", &active);
 
-    printf("Enter a username: ");
-    scanf("%s", newUser.username);
-    printf("Enter a password: ");
-    scanf("%s", newUser.password);
+    f = active;
 
-    fprintf(file, "%s %s\n", newUser.username, newUser.password);
-    fclose(file);
-    printf("Registration successful!\n");
-}
+    printf("\nEnter Username: ");
+    scanf("%s", l.username);
 
-int checkUser(char *username, char *password) {
-    struct User user;
-    FILE *file = fopen("users.txt", "r");
+    printf("\nEnter Password: ");
+    scanf("%s", l.password);
 
-    if (file == NULL) {
-        perror("Error opening file");
-        exit(1);
-    }
+    getchar();
 
-    while (fscanf(file, "%s %s", user.username, user.password) != EOF) {
-        if (strcmp(username, user.username) == 0 && strcmp(password, user.password) == 0) {
-            fclose(file);
-            return 1;
+    if (f)
+    {
+        char usernamee[30], passwordd[20];
+
+        printf("\nPlease Enter your login credentials below\n\n");
+        printf("Username:  ");
+        scanf("%s", usernamee);
+
+        printf("\nPassword: ");
+        printf("\n");
+        scanf("%s", passwordd);
+
+        int r1 = strcmp(usernamee, l.username);
+        int r2 = strcmp(passwordd, l.password);
+
+        if (r1 == 0 && r2 == 0)
+        {
+            printf("\nSuccessful Login\n");
         }
-    }
-
-    fclose(file);
-    return 0;
-}
-
-int main() {
-    int choice;
-    char username[50];
-    char password[50];
-
-    while (1) {
-        printf("1. Register\n2. Login\n3. Exit\nEnter your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                registerUser();
-                break;
-
-            case 2:
-                printf("Enter username: ");
-                scanf("%s", username);
-                printf("Enter password: ");
-                scanf("%s", password);
-
-                if (checkUser(username, password)) {
-                    printf("Login successful!\n");
-                } else {
-                    printf("Login failed. Invalid username or password.\n");
-                }
-                break;
-
-            case 3:
-                printf("Exiting program.\n");
-                exit(0);
-
-            default:
-                printf("Invalid choice. Try again.\n");
-                break;
+        else
+        {
+            printf("\nLogin Failed\n");
         }
     }
 
